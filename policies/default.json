@@ -1,0 +1,31 @@
+{
+  "thresholds": {
+    "medium": 20,
+    "high": 45,
+    "critical": 75
+  },
+  "weights": {
+    "info": 0,
+    "low": 4,
+    "medium": 10,
+    "high": 20,
+    "critical": 40
+  },
+  "permissions": {
+    "block": ["ModifyAllData", "ViewAllData", "AuthorApex", "ManageUsers"],
+    "review": ["ModifyAllRecords", "ViewAllRecords"]
+  },
+  "policies": {
+    "missing-dependency": { "enabled": true, "severity": "critical" },
+    "apex-tests": { "enabled": true, "severity": "high" },
+    "excessive-permission": { "enabled": true, "severity": "high" },
+    "record-permission": { "enabled": true, "severity": "medium" },
+    "hardcoded-endpoint": { "enabled": true, "severity": "high" },
+    "hardcoded-id": { "enabled": true, "severity": "medium" },
+    "profile-change": { "enabled": true, "severity": "high" },
+    "destructive-change": { "enabled": true, "severity": "critical" },
+    "see-all-data": { "enabled": true, "severity": "high" },
+    "configuration-drift": { "enabled": true, "severity": "medium" },
+    "naming": { "enabled": true, "severity": "low" }
+  }
+}

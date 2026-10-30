@@ -1,0 +1,55 @@
+{
+  "name": "agentia-release-guardian",
+  "version": "1.0.0",
+  "description": "Agentia CLI plugin that assesses Salesforce release risk before promotion.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "release-check": "./bin/release-check.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "policies",
+    "skills",
+    "examples",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "tsc -p tsconfig.json && node --test dist/test",
+    "release-check": "node bin/release-check.js"
+  },
+  "oclif": {
+    "bin": "agentia",
+    "dirname": "agentia",
+    "commands": "./dist/commands",
+    "hooks": {
+      "agentia:contribute": "./dist/hooks/contribute.js"
+    }
+  },
+  "agentia": {
+    "hostApi": 1,
+    "requires": ["workspace.current", "format.table"],
+    "permissions": {
+      "network": [],
+      "files": "read",
+      "commands": ["git", "sf"],
+      "env": []
+    },
+    "hooks": ["agentia:contribute"]
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@copado/agentia-plugin-sdk": "0.1.3",
+    "@oclif/core": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  },
+  "license": "Apache-2.0"
+}
